@@ -15,6 +15,17 @@ namespace WordpressAutomation
 {
     public class NewPostPage
     {
+        public static String Title
+        {
+            get
+            {
+                var title = Driver.Instance.FindElement(By.Id("title"));
+                if (title != null)
+                    return title.GetAttribute("value");
+                return string.Empty;
+            }
+        }
+
         public static void GoTo()
         {
             var menuPosts = Driver.Instance.FindElement(By.Id("menu-posts"));
@@ -34,6 +45,11 @@ namespace WordpressAutomation
             var message = Driver.Instance.FindElement(By.Id("message"));
             var newPostLink = message.FindElements(By.TagName("a"))[0];
             newPostLink.Click();
+        }
+
+        public static bool IsInEditMode()
+        {
+            return Driver.Instance.FindElement(By.Id("icon-edit-pages")) != null;
         }
     }
 
