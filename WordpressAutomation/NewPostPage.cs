@@ -47,10 +47,13 @@ namespace WordpressAutomation
             newPostLink.Click();
         }
 
-        public static bool IsInEditMode()
+        public static string Header()
         {
-            return Driver.Instance.FindElement(By.Id("icon-edit-pages")) != null;
-        }
+                var header = Driver.Instance.FindElement(By.XPath("//div[@id='wpbody-content']/div[@class='wrap']/h1[contains(text(),'Edit Page')]"));
+                if (header.Text == "Edit Page Add New")
+                    return header.Text;
+                else return string.Empty;
+         }
     }
 
     public class CreatePostCommand
