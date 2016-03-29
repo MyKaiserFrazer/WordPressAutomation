@@ -13,9 +13,6 @@ namespace WordpressTests
         [TestMethod]
         public void Admin_User_Can_Login()
         {
-            LoginPage.GoTo();
-            LoginPage.LoginAs("admin").WithPassword("test123").Login();
-
             Assert.IsTrue(DashboardPage.IsAt, "Failed to login.");
         }
     }

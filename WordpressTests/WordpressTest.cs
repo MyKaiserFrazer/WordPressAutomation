@@ -15,6 +15,8 @@ namespace WordpressTests
         public void Init()
         {
             Driver.Initialize();
+            LoginPage.GoTo();
+            LoginPage.LoginAs("admin").WithPassword("test123").Login();
         }
 
         [TestCleanup]
