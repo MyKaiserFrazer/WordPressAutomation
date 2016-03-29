@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WordpressAutomation;
+using WordpressTests;
 
 namespace WordpressTests
 {
@@ -12,14 +8,8 @@ namespace WordpressTests
     /// Test the Pages functionality, which is similar to Post tests.
     /// </summary>
     [TestClass]
-    public class PageTests
+    public class PageTests : WordpressTest
     {
-        [TestInitialize]
-        public void Init()
-        {
-            Driver.Initialize();
-        }
-
         [TestMethod]
         public void Can_Edit_A_Page()
         {
@@ -32,12 +22,6 @@ namespace WordpressTests
             //Assert.IsTrue(NewPostPage.IsInEditMode(), "Wasn't in edit mode");
             Assert.AreEqual("Edit Page Add New", NewPostPage.Header(), "Header did not match");
             Assert.AreEqual("Sample Page", NewPostPage.Title, "Title did not match");
-        }
-
-        [TestCleanup]
-        public void CleanUp()
-        {
-            // Driver.Close();
         }
     }
 }

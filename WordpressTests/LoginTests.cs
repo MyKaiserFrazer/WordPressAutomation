@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WordpressAutomation;
 /// <summary>
 /// LoginTests.cs
@@ -9,14 +8,8 @@ using WordpressAutomation;
 namespace WordpressTests
 {
     [TestClass]
-    public class LoginTests
+    public class LoginTests : WordpressTest
     {
-        [TestInitialize]
-        public void Init()
-        {
-            Driver.Initialize();
-        }
-
         [TestMethod]
         public void Admin_User_Can_Login()
         {
@@ -24,12 +17,6 @@ namespace WordpressTests
             LoginPage.LoginAs("admin").WithPassword("test123").Login();
 
             Assert.IsTrue(DashboardPage.IsAt, "Failed to login.");
-        }
-
-        [TestCleanup]
-        public void CleanUp()
-        {
-            // Driver.Close();
         }
     }
 }

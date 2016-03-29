@@ -1,15 +1,10 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 /// <summary>
 /// NewPostPage.cs
 /// **Framework**
-/// Selects the menu to create a new blog, fills in the title and body with some text,
-/// publishes the new blog, then selects the link to view the new blog.
+/// Methods to support blog post tests and page tests.
 /// </summary>
 namespace WordpressAutomation
 {
@@ -19,7 +14,7 @@ namespace WordpressAutomation
         {
             get
             {
-                var title = Driver.Instance.FindElement(By.Id("title"));
+                var title = Driver.Instance.FindElement(By.Id("title"));    // used in PageTests.cs
                 if (title != null)
                     return title.GetAttribute("value");
                 return string.Empty;
@@ -42,16 +37,20 @@ namespace WordpressAutomation
 
         public static void GoToNewPost()
         {
-            var message = Driver.Instance.FindElement(By.Id("message"));
+            var message = Driver.Instance.FindElement(By.Id("message"));    // View the new post just created.
             var newPostLink = message.FindElements(By.TagName("a"))[0];
             newPostLink.Click();
         }
 
+        /// <summary>
+        /// Used in CreatePostTests.cs to to ensue the page is in Edit mode
+        /// </summary>
+        /// <returns>string</returns>
         public static string Header()
         {
                 var header = Driver.Instance.FindElement(By.XPath("//div[@id='wpbody-content']/div[@class='wrap']/h1[contains(text(),'Edit Page')]"));
                 if (header.Text == "Edit Page Add New")
-                    return header.Text;
+                    return header.Text;     // used in PageTests.cs
                 else return string.Empty;
          }
     }

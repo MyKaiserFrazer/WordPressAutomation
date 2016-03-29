@@ -1,10 +1,7 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+/// <summary>
+/// Methods to support menu selection and Sample Page selection in PageTests
+/// </summary>
 namespace WordpressAutomation
 {
     public class ListPostsPage

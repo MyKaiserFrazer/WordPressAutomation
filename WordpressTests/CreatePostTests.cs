@@ -1,27 +1,18 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WordpressAutomation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 /// <summary>
 /// CreatePostTests.cs
 /// **Test**
-/// The main test file for creating blog post test.
+/// The main test runner file for creating blog post test.
+/// Selects the menu to create a new blog, fills in the title and body with some text,
+/// publishes the new blog, selects the link to view the new blog and finally verifies
+/// the title of the new blod post is correct.
 /// </summary>
 namespace WordpressTests
 {
     [TestClass]
-    public class CreatePostTests
+    public class CreatePostTests : WordpressTest
     {
-
-        [TestInitialize]
-        public void Init()
-        {
-            Driver.Initialize();
-        }
-
         [TestMethod]
         public void Can_Create_A_Basic_Post()
         {
@@ -34,12 +25,6 @@ namespace WordpressTests
             NewPostPage.GoToNewPost();
 
             Assert.AreEqual(PostPage.Title, "This is the test post title", "Title did not match new post.");
-        }
-
-        [TestCleanup]
-        public void CleanUp()
-        {
-            Driver.Close();
         }
     }
 }
