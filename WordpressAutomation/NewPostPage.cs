@@ -23,6 +23,7 @@ namespace WordpressAutomation
 
         public static void GoTo()
         {
+            // Refactor: Should we make a general menu navigation?
             var menuPosts = Driver.Instance.FindElement(By.Id("menu-posts"));
             menuPosts.Click();
 
@@ -81,7 +82,7 @@ namespace WordpressAutomation
             //Driver.Instance.SwitchTo().DefaultContent();
 
             Driver.Instance.FindElement(By.Id("publish")).Click();
-            Thread.Sleep(2000); // wait some time for the publish to process
+            Driver.Wait(TimeSpan.FromSeconds(1));   // wait some time for the publish to process
         }
     }
 }

@@ -11,6 +11,7 @@ namespace WordpressTests
         /// abstracts away from each individual test module and provides [TestInitialize]
         /// and [TestCleanup] here to inherit from.
         /// </summary>
+
         [TestInitialize]
         public void Init()
         {

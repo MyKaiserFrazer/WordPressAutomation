@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using System;
+using System.Threading;
 /// <summary>
 /// Driver.cs
 /// **Framework**
@@ -13,6 +14,11 @@ namespace WordpressAutomation
     {
         public static IWebDriver Instance { get; set; }
 
+        public static string BaseAddress
+        {
+            get { return "http://localhost:2329/";  }  // Refactor: maybe read this from a config file later on
+        }
+
         public static void Initialize()
         {
             Instance = new FirefoxDriver();
@@ -22,6 +28,11 @@ namespace WordpressAutomation
         public static void Close()
         {
             // Instance.Close();
+        }
+
+        public static void Wait(TimeSpan timeSpan)
+        {
+            Thread.Sleep((int)(timeSpan.TotalSeconds * 1000));
         }
     }
 }
