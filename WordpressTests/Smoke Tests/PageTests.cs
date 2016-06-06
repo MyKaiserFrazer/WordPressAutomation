@@ -12,7 +12,7 @@ namespace WordpressTests
         [TestMethod]
         public void Can_Edit_A_Page()
         {
-            ListPostsPage.GoTo(PostType.Page);       // general purpose class this will work for both posts and pages
+            ListPostsPage.GoTo(ListPostsPage.PostType.Page);       // general purpose class this will work for both posts and pages
             ListPostsPage.SelectPost("Sample Page");    // or you could add an index [0] or [1] for the 1st or 2nd post of that page
 
             //Assert.IsTrue(NewPostPage.IsInEditMode(), "Wasn't in edit mode");

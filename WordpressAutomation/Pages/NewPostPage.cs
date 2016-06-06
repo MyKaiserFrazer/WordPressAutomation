@@ -23,12 +23,7 @@ namespace WordpressAutomation
 
         public static void GoTo()
         {
-            // Refactor: Should we make a general menu navigation?
-            var menuPosts = Driver.Instance.FindElement(By.Id("menu-posts"));
-            menuPosts.Click();
-
-            var addNew = Driver.Instance.FindElement(By.LinkText("Add New"));
-            addNew.Click();
+            LeftNavigation.Posts.AddNew.Select();
         }
 
         public static CreatePostCommand CreatePost(string title)

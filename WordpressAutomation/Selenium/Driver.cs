@@ -22,17 +22,34 @@ namespace WordpressAutomation
         public static void Initialize()
         {
             Instance = new FirefoxDriver();
-            Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
+            TurnOnWait();
         }
 
         public static void Close()
         {
-            // Instance.Close();
+            Instance.Close();
         }
 
         public static void Wait(TimeSpan timeSpan)
         {
             Thread.Sleep((int)(timeSpan.TotalSeconds * 1000));
+        }
+
+        public static void NoWait(Action action)
+        {
+            TurnOffWait();
+            action();
+            TurnOnWait();
+        }
+
+        public static void TurnOffWait()
+        {
+            Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(0));
+        }
+
+        public static void TurnOnWait()
+        {
+            Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5));
         }
     }
 }
